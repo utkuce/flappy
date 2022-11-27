@@ -7,6 +7,7 @@ onready var debugInfo : CanvasLayer = get_node("/root/DebugInfo")
 onready var velocity : float = 0
 
 func _ready():
+	$AnimatedSprite.play()
 	pass
 
 func _physics_process(delta):
