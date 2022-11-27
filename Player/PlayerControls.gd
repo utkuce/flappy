@@ -19,6 +19,7 @@ func _physics_process(delta):
 	velocity += gravity
 	position.y += velocity * delta
 
-	debugInfo.add_line("player_velocity", "Velocity: " + String(velocity))
-	debugInfo.add_line("player_position", "Y Position: " + String(int(position.y)))
-	debugInfo.add_line("player_falling", "Falling: " + String(falling))
+	if OS.is_debug_build():
+		debugInfo.add_line("player_velocity", "Velocity: " + String(velocity))
+		debugInfo.add_line("player_position", "Y Position: " + String(int(position.y)))
+		debugInfo.add_line("player_falling", "Falling: " + String(falling))
