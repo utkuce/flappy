@@ -12,5 +12,6 @@ func add_line(info_key: String, info_text: String):
 func _process(_delta):
 	if OS.is_debug_build():
 		label.text = ""
+		label.text += "FPS: " + String(Engine.get_frames_per_second()) + "\n"
 		for info_key in lines:
 			label.text += lines[info_key] + "\n"
