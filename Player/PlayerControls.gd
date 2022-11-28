@@ -6,12 +6,13 @@ export var gravity = 50
 onready var debugInfo : CanvasLayer = $"/root/DebugInfo"
 onready var velocity : float = 0
 
+var falling: bool = false
+
 func _ready():
 	$AnimatedSprite.play()
-	pass
 
 func _physics_process(delta):
-	var falling = velocity > 0
+	falling = velocity > 0
 	if (falling):
 		if Input.is_action_pressed("primary_input"):
 			velocity = -pulse
@@ -19,6 +20,7 @@ func _physics_process(delta):
 	velocity += gravity
 	position.y += velocity * delta
 
+func _process(_delta):
 	if OS.is_debug_build():
 		debugInfo.add_line("player_velocity", "Velocity: " + String(velocity))
 		debugInfo.add_line("player_position", "Y Position: " + String(int(position.y)))
