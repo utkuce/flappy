@@ -1,9 +1,9 @@
 extends Node2D
 
-export var pulse = 750
-export var gravity = 25
+export var pulse = 1500
+export var gravity = 50
 
-onready var debugInfo : CanvasLayer = get_node("/root/DebugInfo")
+onready var debugInfo : CanvasLayer = $"/root/DebugInfo"
 onready var velocity : float = 0
 
 func _ready():
