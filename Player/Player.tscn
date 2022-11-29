@@ -13,8 +13,8 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 32.1403
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 25, 25 )
 
 [node name="Player" type="RigidBody2D"]
 mode = 3
@@ -27,5 +27,5 @@ animation = "flap"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 8 )
+position = Vector2( 0, 10 )
 shape = SubResource( 2 )
