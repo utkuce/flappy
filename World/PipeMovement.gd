@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 export var gameSpeed : float = 400
 var screenSize: Vector2
