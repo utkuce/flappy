@@ -1,5 +1,4 @@
 extends TileMap
-onready var debugInfo : CanvasLayer = $"/root/DebugInfo"
 
 var gapSize : int = 5 # vertical opening size
 var pipeInterval : int = 5 # horizontal distance between each pipe
@@ -11,12 +10,12 @@ var rng = RandomNumberGenerator.new()
 
 enum PipeTiles {TOP = 0, MIDDLE = 1, BOTTOM = 2}
 
-func generate(screenSize: Vector2, offset: int = 0, first: bool = false) -> int:
+func generate(screenSize: Vector2, offset: int = 0) -> int:
 	clear()
 	tileGridSize = (screenSize / Vector2(cell_size.x, cell_size.y) / scale).ceil()
 	
 	#initially fill the second half of the screen
-	currentPipeX = int(tileGridSize.x/2) if first else offset
+	currentPipeX = offset
 	while currentPipeX < tileGridSize.x:	
 		add_pipe()
 		

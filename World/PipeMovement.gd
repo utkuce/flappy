@@ -1,14 +1,18 @@
 extends StaticBody2D
 
+# Scrolling speed of the game
 export var gameSpeed : float = 400
-var screenSize: Vector2
+# First pipe position when the game starts (in tile units)
+export var initialOffset: int
+
 var offset: int
+var screenSize: Vector2
 
 func init(screenSize):
 	self.screenSize = screenSize
 	
 	$PipeTiles1.position.x = 0
-	offset = $PipeTiles1.generate(screenSize, 0, true)
+	offset = $PipeTiles1.generate(screenSize, initialOffset)
 		
 	$PipeTiles2.position.x = screenSize.x
 	offset = $PipeTiles2.generate(screenSize, offset)

@@ -93,6 +93,7 @@ zoom = Vector2( 2, 2 )
 
 [node name="Pipes" type="StaticBody2D" parent="."]
 script = ExtResource( 7 )
+initialOffset = 14
 
 [node name="PipeTiles1" type="TileMap" parent="Pipes"]
 scale = Vector2( 5, 5 )
@@ -102,7 +103,7 @@ cell_quadrant_size = 1
 collision_use_parent = true
 format = 1
 tile_data = PoolIntArray( 7, 1, 0, 13, 1, 0, 19, 1, 0, 65543, 1, 0, 65549, 1, 0, 65555, 1, 0, 131079, 1, 0, 131085, 2, 0, 131091, 1, 0, 196615, 1, 0, 196627, 1, 0, 262151, 2, 0, 262163, 1, 0, 327699, 2, 0, 393229, 0, 0, 458765, 1, 0, 524295, 0, 0, 524301, 1, 0, 589831, 1, 0, 589837, 1, 0, 589843, 0, 0, 655367, 1, 0, 655373, 1, 0, 655379, 1, 0, 720903, 1, 0, 720909, 1, 0, 720915, 1, 0, 786439, 1, 0, 786445, 1, 0, 786451, 1, 0, 851975, 1, 0, 851981, 1, 0, 851987, 1, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 6 )
 
 [node name="PipeTiles2" type="TileMap" parent="Pipes"]
 scale = Vector2( 5, 5 )
@@ -112,6 +113,6 @@ cell_quadrant_size = 1
 collision_use_parent = true
 format = 1
 tile_data = PoolIntArray( 7, 1, 0, 13, 1, 0, 19, 1, 0, 65543, 1, 0, 65549, 1, 0, 65555, 1, 0, 131079, 1, 0, 131085, 2, 0, 131091, 1, 0, 196615, 1, 0, 196627, 1, 0, 262151, 2, 0, 262163, 1, 0, 327699, 2, 0, 393229, 0, 0, 458765, 1, 0, 524295, 0, 0, 524301, 1, 0, 589831, 1, 0, 589837, 1, 0, 589843, 0, 0, 655367, 1, 0, 655373, 1, 0, 655379, 1, 0, 720903, 1, 0, 720909, 1, 0, 720915, 1, 0, 786439, 1, 0, 786445, 1, 0, 786451, 1, 0, 851975, 1, 0, 851981, 1, 0, 851987, 1, 0 )
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
