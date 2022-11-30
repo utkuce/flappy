@@ -35,7 +35,7 @@ func add_pipe_pair():
 	var currentPipeY = 0
 	
 	# opening between two pipes from gapPosition to gapPosition + gapsize
-	var gapPosition = int(rng.randf_range(1, tileGridSize.y - gapSize - 1))
+	var gapPosition = int(rng.randf_range(1, tileGridSize.y - gapSize - 2))
 	
 	# top pipe sprites
 	while currentPipeY < gapPosition:
@@ -44,7 +44,7 @@ func add_pipe_pair():
 	set_cell(currentPipeX, gapPosition, PipeTiles.BOTTOM)
 	
 	# top pipe collision
-	var topLeft = Vector2(currentPipeX, 0) * cell_size
+	var topLeft = map_to_world(Vector2(currentPipeX, 0))
 	var bottomRight = map_to_world(Vector2(currentPipeX + 1, currentPipeY + 1))
 	add_pipe_collider(topLeft, bottomRight)
 	
