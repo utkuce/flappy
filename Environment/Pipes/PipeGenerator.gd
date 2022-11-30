@@ -2,7 +2,8 @@ extends TileMap
 
 var gapSize : int = 4 # vertical opening size
 var pipeInterval : int = 5 # horizontal distance between each pipe
-var pipeCollider = preload("PipeCollider.tscn") # Area2D
+var pipeCollider : PackedScene = preload("res://Environment/Pipes/PipeCollider.tscn") # Area2D
+var scoreArea : PackedScene = preload("res://Environment/ScoreArea.tscn") # Area2D
 var currentPipeX: int
 
 var tileGridSize: Vector2
@@ -61,6 +62,10 @@ func add_pipe_pair():
 	bottomRight = map_to_world(Vector2(currentPipeX + 1, tileGridSize.y + 1))
 	add_pipe_collider(topLeft, bottomRight)
 	
+	topLeft = map_to_world(Vector2(currentPipeX + 1, 0))
+	bottomRight = map_to_world(Vector2(currentPipeX + pipeInterval, tileGridSize.y + 1))
+	add_score_area(topLeft, bottomRight)
+	
 	# next pipe x position in tile units
 	currentPipeX += pipeInterval
 
@@ -68,3 +73,8 @@ func add_pipe_collider(topLeft, bottomRight):
 	var pc = pipeCollider.instance()
 	pc.set_corners(topLeft, bottomRight)
 	add_child(pc)
+
+func add_score_area(topLeft, bottomRight):
+	var sa = scoreArea.instance()
+	sa.set_corners(topLeft, bottomRight)
+	add_child(sa)
