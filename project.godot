@@ -21,6 +21,7 @@ DebugInfo="*res://UI/DebugInfo/DebugInfo.tscn"
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [gui]
 
