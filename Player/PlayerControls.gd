@@ -22,7 +22,7 @@ func _physics_process(delta):
 	
 	# boundary checks
 	if position.y < 0 || position.y > get_parent().screenSize.y:
-		print("player out of boundaries")
+		get_node("/root/Game").player_died()
 
 func _process(_delta):
 	if OS.is_debug_build():

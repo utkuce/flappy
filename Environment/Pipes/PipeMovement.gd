@@ -13,6 +13,8 @@ func init(screenSize):
 	
 	offset = $PipeTiles1.generate(screenSize, initialOffset)		
 	offset = $PipeTiles2.generate(screenSize, offset)
+	
+	$PipeTiles1.position.x = 0
 	$PipeTiles2.position.x = screenSize.x
 
 func _physics_process(delta):
