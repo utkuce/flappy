@@ -21,6 +21,7 @@ func generate(screenSize: Vector2, offset: int = 0) -> int:
 		
 	# visible size in tile units
 	tileGridSize = (screenSize / Vector2(cell_size.x, cell_size.y) / scale).ceil()
+	cell_quadrant_size = tileGridSize.x * tileGridSize.y
 	
 	#initially fill the second half of the screen
 	currentPipeX = offset

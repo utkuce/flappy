@@ -15,10 +15,15 @@ func _physics_process(delta):
 	falling = velocity > 0
 	if (falling):
 		if Input.is_action_pressed("primary_input"):
+			$AnimatedSprite.play()
 			velocity = -pulse
+		else:
+			$AnimatedSprite.stop()
+			$AnimatedSprite.frame = 1
 		
 	velocity += gravity
 	position.y += velocity * delta
+	rotation_degrees = range_lerp(velocity, pulse, -pulse, 90, -90)
 	
 	# boundary checks
 	if position.y < 0 || position.y > get_parent().screenSize.y:
