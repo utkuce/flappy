@@ -5,7 +5,7 @@ func _ready():
 
 func on_area_entered(area: Area2D):
 	if area.owner && area.owner.name == "Player":
-		print("player scored")
+		get_node("/root/Game").increment_score()
 	
 func set_corners(topLeft, bottomRight):
 	name = "Score Area " + String(topLeft) + "" + String(bottomRight)

@@ -11,12 +11,12 @@ config_version=4
 [application]
 
 config/name="Flappy"
-run/main_scene="res://World/World.tscn"
+run/main_scene="res://Game/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-DebugInfo="*res://DebugInfo/DebugInfo.tscn"
+DebugInfo="*res://UI/DebugInfo/DebugInfo.tscn"
 
 [display]
 
