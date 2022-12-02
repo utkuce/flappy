@@ -3,7 +3,7 @@ extends TileMap
 var gapSize : int = 4 # vertical opening size
 var pipeInterval : int = 5 # horizontal distance between each pipe
 var pipeCollider : PackedScene = preload("res://Environment/Pipes/PipeCollider.tscn") # Area2D
-var scoreArea : PackedScene = preload("res://Environment/ScoreArea.tscn") # Area2D
+var scoreArea : PackedScene = preload("res://Environment/Score Area/ScoreArea.tscn") # Area2D
 var currentPipeX: int
 
 var tileGridSize: Vector2
