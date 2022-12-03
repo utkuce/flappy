@@ -16,7 +16,7 @@ func _ready():
 func _physics_process(delta):
 	falling = velocity.y > 0
 	if (falling):
-		if Input.is_action_pressed("primary_input"):
+		if Input.is_action_just_pressed("primary_input"):
 			$AnimatedSprite.play()
 			velocity.y = -pulse
 		else:
@@ -33,7 +33,6 @@ func _physics_process(delta):
 		get_node("/root/Game").player_died()
 
 func _process(_delta):
-	if OS.is_debug_build():
-		debugInfo.add_line("player_velocity", "Velocity: " + String(velocity))
-		debugInfo.add_line("player_position", "Position: " + String(position.floor()))
-		debugInfo.add_line("player_falling", "Falling: " + String(falling))
+	debugInfo.add_line("player_velocity", "Velocity: " + String(velocity))
+	debugInfo.add_line("player_position", "Position: " + String(position.floor()))
+	debugInfo.add_line("player_falling", "Falling: " + String(falling))
