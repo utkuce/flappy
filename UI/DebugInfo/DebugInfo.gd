@@ -15,9 +15,12 @@ func _process(_delta):
 		enabled = !enabled
 		
 	if enabled:
+		var fps = Engine.get_frames_per_second()
+		var mem = stepify(OS.get_static_memory_usage()/1024.0/1024.0, 0.01)
+		
 		label.text = ""
-		label.text += "FPS: " + String(Engine.get_frames_per_second()) + "\n"
-		label.text += "Memory: " + String(OS.get_static_memory_usage()) + "\n\n"
+		label.text += "FPS: " + String(fps) + "\n"
+		label.text += "Memory: " + String(mem) + "MB\n\n"
 		for info_key in lines:
 			label.text += lines[info_key] + "\n"
 	else:
