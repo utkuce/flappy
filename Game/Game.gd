@@ -19,6 +19,7 @@ func start_game():
 	
 	$Player.position.x = 0
 	$Player.position.y = screenSize.y/2
+	$Player.velocity = Vector2($Player.velocity.x, 0)
 	$Pipes/PipeTiles.reset(screenSize)
 	
 func increment_score():
