@@ -26,9 +26,12 @@ func init(screenSize):
 
 func reset(screenSize):
 	
+	yield(get_tree(), "idle_frame")
+	
 	# remove PipeCollider children
-	for child in get_children():
-		child.queue_free()
+	for collider in get_children():
+		remove_child(collider)
+		collider.queue_free()
 		
 	# clear tiles
 	clear()
@@ -55,9 +58,9 @@ func add_pipe_pair():
 	add_pipe_collider(topLeft, bottomRight)
 	
 	# bottom pipe sprites
-	currentPipeY = gapPosition + gapSize + 1	
+	currentPipeY = gapPosition + gapSize + 1
 	set_cell(currentPipeX, currentPipeY, pipe_bottom)
-	currentPipeY += 1		
+	currentPipeY += 1
 	while currentPipeY <= tileGridHeight:
 		set_cell(currentPipeX, currentPipeY, pipe_middle)
 		currentPipeY += 1

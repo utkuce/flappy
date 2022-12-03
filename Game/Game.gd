@@ -6,14 +6,14 @@ var bestScore = 0
 
 func _ready():
 	screenSize = get_viewport().size * $Camera2D.zoom
-	reset()
+	start_game()
 	$Camera2D.position.x -= screenSize.x/5
 	$Player.position.y = screenSize.y/2
 	
 func player_died():
-	reset()
+	start_game()
 	
-func reset():
+func start_game():
 	currentScore = 0
 	updateScoreDisplay()
 	
