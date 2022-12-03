@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Environment/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Environment/Pipes/PipeGenerator.gd" type="Script" id=6]
-[ext_resource path="res://Environment/Pipes/PipeMovement.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://UI/Fonts/Kenney Pixel Square.ttf"
@@ -25,26 +24,14 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [node name="Pipes" type="Node2D" parent="."]
-script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PipeTiles1" type="TileMap" parent="Pipes"]
+[node name="PipeTiles" type="TileMap" parent="Pipes"]
 scale = Vector2( 5, 5 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 18, 18 )
-format = 1
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="PipeTiles2" type="TileMap" parent="Pipes"]
-scale = Vector2( 5, 5 )
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 18, 18 )
-cell_quadrant_size = 1
 format = 1
 script = ExtResource( 6 )
 __meta__ = {

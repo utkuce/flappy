@@ -5,15 +5,23 @@ var score = 0
 
 func _ready():
 	screenSize = get_viewport().size * $Camera2D.zoom
-	$Player.position = Vector2(screenSize.x/5, screenSize.y/2)
-	$Pipes.init(screenSize)
+	reset()
+	$Camera2D.position.x -= screenSize.x/5
+	$Player.position.y = screenSize.y/2
 	
 func player_died():
+	reset()
+	
+func reset():
 	score = 0
 	get_node("CanvasLayer/ScoreDisplay").text = "Score: " + String(score)
-	$Pipes.init(screenSize)
-	$Player.position = Vector2(screenSize.x/5, screenSize.y/2)
+	$Player.position.x = 0
+	$Player.position.y = screenSize.y/2
+	$Pipes/PipeTiles.reset(screenSize)
 	
 func increment_score():
 	score += 1
 	get_node("CanvasLayer/ScoreDisplay").text = "Score: " + String(score)
+	
+func _process(_delta):
+	$Camera2D.position.x = $Player.position.x - screenSize.x/5

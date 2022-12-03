@@ -1,45 +1,47 @@
 extends TileMap
 
-var gapSize : int = 4 # vertical opening size
-var pipeInterval : int = 5 # horizontal distance between each pipe
 var pipeCollider : PackedScene = preload("res://Environment/Pipes/PipeCollider.tscn") # Area2D
 var scoreArea : PackedScene = preload("res://Environment/Score Area/ScoreArea.tscn") # Area2D
-var currentPipeX: int
 
-var tileGridSize: Vector2
+export var initialOffset : int = 14
+export var initialPipeCount : int = 20
+
+var gapSize : int = 4 # vertical opening size
+var pipeInterval : int = 5 # horizontal distance between each pipe
+var currentPipeX : int
+
+var tileGridHeight : int
 var rng = RandomNumberGenerator.new()
 
 var pipe_top    = tile_set.find_tile_by_name("pipe_top")
 var pipe_middle = tile_set.find_tile_by_name("pipe_middle")
 var pipe_bottom = tile_set.find_tile_by_name("pipe_bottom")
 
-func generate(screenSize: Vector2, offset: int = 0) -> int:
+func init(screenSize):
+	tileGridHeight = (screenSize.y/cell_size.y)/scale.y
+	currentPipeX = initialOffset
+	
+	for i in range(initialPipeCount):
+		add_pipe_pair()
+
+func reset(screenSize):
+	
 	# remove PipeCollider children
 	for child in get_children():
-		remove_child(child)
+		child.queue_free()
 		
 	# clear tiles
 	clear()
-		
-	# visible size in tile units
-	tileGridSize = (screenSize / Vector2(cell_size.x, cell_size.y) / scale).ceil()
-	cell_quadrant_size = tileGridSize.x * tileGridSize.y
 	
-	#initially fill the second half of the screen
-	currentPipeX = offset
-	while currentPipeX < tileGridSize.x:	
-		add_pipe_pair()
-		
-	# return remaining empty tiles so the next tilemap can adjust
-	# its starting point for a constant interval 
-	return currentPipeX - int(tileGridSize.x)
+	# reinit
+	init(screenSize)
 
 func add_pipe_pair():
 	rng.randomize()
 	var currentPipeY = 0
 	
 	# opening between two pipes from gapPosition to gapPosition + gapsize
-	var gapPosition = int(rng.randf_range(1, tileGridSize.y - gapSize - 2))
+	var gapPosition = int(rng.randf_range(1, tileGridHeight - gapSize - 2))
 	
 	# top pipe sprites
 	while currentPipeY < gapPosition:
@@ -56,17 +58,17 @@ func add_pipe_pair():
 	currentPipeY = gapPosition + gapSize + 1	
 	set_cell(currentPipeX, currentPipeY, pipe_bottom)
 	currentPipeY += 1		
-	while currentPipeY <= tileGridSize.y:
+	while currentPipeY <= tileGridHeight:
 		set_cell(currentPipeX, currentPipeY, pipe_middle)
 		currentPipeY += 1
 
 	# bottom pipe collision
 	topLeft = map_to_world(Vector2(currentPipeX, gapPosition + gapSize + 1))
-	bottomRight = map_to_world(Vector2(currentPipeX + 1, tileGridSize.y + 1))
+	bottomRight = map_to_world(Vector2(currentPipeX + 1, tileGridHeight + 1))
 	add_pipe_collider(topLeft, bottomRight)
 	
 	topLeft = map_to_world(Vector2(currentPipeX + 1, 0))
-	bottomRight = map_to_world(Vector2(currentPipeX + pipeInterval, tileGridSize.y + 1))
+	bottomRight = map_to_world(Vector2(currentPipeX + pipeInterval, tileGridHeight + 1))
 	add_score_area(topLeft, bottomRight)
 	
 	# next pipe x position in tile units

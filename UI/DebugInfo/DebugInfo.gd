@@ -13,5 +13,6 @@ func _process(_delta):
 	if OS.is_debug_build():
 		label.text = ""
 		label.text += "FPS: " + String(Engine.get_frames_per_second()) + "\n"
+		label.text += "Memory: " + String(OS.get_static_memory_usage()) + "\n\n"
 		for info_key in lines:
 			label.text += lines[info_key] + "\n"
