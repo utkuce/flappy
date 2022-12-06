@@ -33,6 +33,6 @@ func _physics_process(delta):
 		get_node("/root/Game").player_died()
 
 func _process(_delta):
-	debugInfo.add_line("player_velocity", "Velocity: " + String(velocity))
-	debugInfo.add_line("player_position", "Position: " + String(position.floor()))
-	debugInfo.add_line("player_falling", "Falling: " + String(falling))
+	DebugInfo.add_line("player_velocity", "Velocity: " + String(velocity))
+	DebugInfo.add_line("player_position", "Position: " + String(position.floor()))
+	DebugInfo.add_line("player_falling", "Falling: " + String(falling))
