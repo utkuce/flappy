@@ -10,7 +10,9 @@ func _ready():
 	$Camera2D.position.x -= screenSize.x/5
 	$Player.position.y = screenSize.y/2
 	
-func player_died():
+	EventBus.connect("player_died", self, "on_player_died")
+	
+func on_player_died():
 	start_game()
 	
 func start_game():

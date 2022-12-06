@@ -1,7 +1,5 @@
 extends Node2D
 
-onready var debugInfo : CanvasLayer = $"/root/DebugInfo"
-
 export var pulse = 1200
 export var gravity = 50
 export var velocityX = 400
@@ -30,7 +28,7 @@ func _physics_process(delta):
 	
 	# boundary checks
 	if position.y < 0 || position.y > get_parent().screenSize.y:
-		get_node("/root/Game").player_died()
+		EventBus.emit_signal("player_died")
 
 func _process(_delta):
 	DebugInfo.add_line("player_velocity", "Velocity: " + String(velocity))

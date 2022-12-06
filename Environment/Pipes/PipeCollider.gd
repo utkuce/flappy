@@ -12,7 +12,7 @@ func on_screen_exited():
 	queue_free()
 	
 func notify_player_died():
-	get_node("/root/Game").player_died()
+	EventBus.emit_signal("player_died")
 		
 func on_area_entered(area: Area2D):
 	if area.owner && area.owner.name == "Player":

@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 DebugInfo="*res://UI/DebugInfo/DebugInfo.tscn"
+EventBus="*res://Game/EventBus.gd"
 
 [display]
 
