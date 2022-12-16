@@ -4,6 +4,8 @@ var screenSize : Vector2
 var currentScore = 0
 var bestScore = 0
 
+onready var scoreDisplay = get_node("CanvasLayer/ScoreDisplay")
+
 func _ready():
 	screenSize = get_viewport().size * $Camera2D.zoom
 	start_game()
@@ -30,8 +32,8 @@ func increment_score():
 	updateScoreDisplay()
 	
 func updateScoreDisplay():
-	get_node("CanvasLayer/ScoreDisplay").text = "Score: " + String(currentScore) + "\n"
-	get_node("CanvasLayer/ScoreDisplay").text += "Best: " + String(bestScore)	
+	scoreDisplay.text = "Score: " + String(currentScore) + "\n"
+	scoreDisplay.text += "Best: " + String(bestScore)	
 	
 func _process(_delta):
 	$Camera2D.position.x = $Player.position.x - screenSize.x/5
