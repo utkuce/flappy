@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
-[ext_resource path="res://Environment/tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Environment/Pipes/pipe_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Environment/Pipes/PipeGenerator.gd" type="Script" id=6]
 
@@ -23,12 +23,9 @@ anchor_mode = 0
 current = true
 zoom = Vector2( 2, 2 )
 
-[node name="Pipes" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Environment" type="Node2D" parent="."]
 
-[node name="PipeTiles" type="TileMap" parent="Pipes"]
+[node name="Pipes" type="TileMap" parent="Environment"]
 scale = Vector2( 5, 5 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 18, 18 )

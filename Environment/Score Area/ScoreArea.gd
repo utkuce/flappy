@@ -16,7 +16,7 @@ func on_area_entered(area: Area2D):
 		call_deferred("generate_more_map")	
 	
 func generate_more_map():
-	get_node("/root/Game/Pipes/PipeTiles").add_pipe_pair()
+	get_node("/root/Game/Environment/Pipes").add_pipe_pair()
 	
 func set_corners(topLeft, bottomRight):
 	name = "Score Area " + String(topLeft) + "" + String(bottomRight)
