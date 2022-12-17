@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game/Game.gd" type="Script" id=1]
 [ext_resource path="res://Environment/Pipes/pipe_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Environment/Background/bg_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Environment/Background/CloudGenerator.gd" type="Script" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Environment/Pipes/PipeGenerator.gd" type="Script" id=6]
 
@@ -18,27 +20,56 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-current = true
-zoom = Vector2( 2, 2 )
-
 [node name="Environment" type="Node2D" parent="."]
+
+[node name="Background" type="ParallaxBackground" parent="Environment"]
+
+[node name="CloudsLayer1" type="ParallaxLayer" parent="Environment/Background"]
+motion_scale = Vector2( 0.75, 1 )
+
+[node name="Clouds" type="TileMap" parent="Environment/Background/CloudsLayer1"]
+scale = Vector2( 5, 5 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( 65554, 1073741824, 0, 65555, 1073741824, 1, 65556, 1073741824, 1, 65557, 1073741824, 1, 65558, 1073741824, 2, 131077, 1073741824, 0, 131078, 1073741824, 1, 131079, 1073741824, 1, 131080, 1073741824, 2, 196623, 1073741824, 0, 196624, 1073741824, 1, 196625, 1073741824, 2, 196626, 1073741825, 0, 327688, 1073741824, 0, 327689, 1073741824, 1, 327690, 1073741824, 2, 327691, 1073741826, 0, 327692, 1073741825, 0, 393231, 1073741824, 0, 393232, 1073741824, 1, 393233, 1073741824, 1, 393234, 1073741824, 1, 393235, 1073741824, 2, 524298, 1073741824, 0, 524299, 1073741824, 1, 524300, 1073741824, 2, 655363, 1073741824, 0, 655364, 1073741824, 1, 655365, 1073741824, 1, 655366, 1073741824, 2, 655377, 1073741824, 0, 655378, 1073741824, 1, 655379, 1073741824, 1, 655380, 1073741824, 1, 655381, 1073741824, 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CloudsLayer2" type="ParallaxLayer" parent="Environment/Background"]
+motion_scale = Vector2( 0.75, 1 )
+
+[node name="Clouds" type="TileMap" parent="Environment/Background/CloudsLayer2"]
+scale = Vector2( 5, 5 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 18, 18 )
+format = 1
+tile_data = PoolIntArray( 65554, 1073741824, 0, 65555, 1073741824, 1, 65556, 1073741824, 1, 65557, 1073741824, 1, 65558, 1073741824, 2, 131077, 1073741824, 0, 131078, 1073741824, 1, 131079, 1073741824, 1, 131080, 1073741824, 2, 196623, 1073741824, 0, 196624, 1073741824, 1, 196625, 1073741824, 2, 196626, 1073741825, 0, 327688, 1073741824, 0, 327689, 1073741824, 1, 327690, 1073741824, 2, 327691, 1073741826, 0, 327692, 1073741825, 0, 393231, 1073741824, 0, 393232, 1073741824, 1, 393233, 1073741824, 1, 393234, 1073741824, 1, 393235, 1073741824, 2, 524298, 1073741824, 0, 524299, 1073741824, 1, 524300, 1073741824, 2, 655363, 1073741824, 0, 655364, 1073741824, 1, 655365, 1073741824, 1, 655366, 1073741824, 2, 655377, 1073741824, 0, 655378, 1073741824, 1, 655379, 1073741824, 1, 655380, 1073741824, 1, 655381, 1073741824, 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Pipes" type="TileMap" parent="Environment"]
 scale = Vector2( 5, 5 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 18, 18 )
 format = 1
+tile_data = PoolIntArray( 9, 1073741826, 0, 14, 1073741826, 0, 19, 1073741826, 0, 65545, 1073741826, 0, 65550, 1073741826, 0, 65555, 1073741826, 0, 131081, 1073741826, 0, 131086, 1073741826, 0, 131091, 1073741826, 0, 196617, 1073741826, 0, 196622, 1073741826, 0, 196627, 1073741826, 0, 262153, 1073741824, 0, 262158, 1073741826, 0, 262163, 1073741824, 0, 327694, 1073741826, 0, 393230, 1073741824, 0, 589833, 1073741825, 0, 589843, 1073741825, 0, 655369, 1073741826, 0, 655379, 1073741826, 0, 720905, 1073741826, 0, 720910, 1073741825, 0, 720915, 1073741826, 0, 786441, 1073741826, 0, 786446, 1073741826, 0, 786451, 1073741826, 0, 851977, 1073741826, 0, 851982, 1073741826, 0, 851987, 1073741826, 0 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( 240, 593 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 2, 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

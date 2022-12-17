@@ -13,9 +13,9 @@ var currentPipeX : int
 var tileGridHeight : int
 var rng = RandomNumberGenerator.new()
 
-var pipe_top    = tile_set.find_tile_by_name("pipe_top")
-var pipe_middle = tile_set.find_tile_by_name("pipe_middle")
-var pipe_bottom = tile_set.find_tile_by_name("pipe_bottom")
+var pipe_tile_top    = tile_set.find_tile_by_name("pipe_top")
+var pipe_tile_middle = tile_set.find_tile_by_name("pipe_middle")
+var pipe_tile_bottom = tile_set.find_tile_by_name("pipe_bottom")
 
 func init(screenSize):
 	tileGridHeight = (screenSize.y/cell_size.y)/scale.y
@@ -48,9 +48,9 @@ func add_pipe_pair():
 	
 	# top pipe sprites
 	while currentPipeY < gapPosition:
-		set_cell(currentPipeX, currentPipeY, pipe_middle)
+		set_cell(currentPipeX, currentPipeY, pipe_tile_middle)
 		currentPipeY += 1
-	set_cell(currentPipeX, gapPosition, pipe_top)
+	set_cell(currentPipeX, gapPosition, pipe_tile_top)
 	
 	# top pipe collision
 	var topLeft = map_to_world(Vector2(currentPipeX, 0))
@@ -59,10 +59,10 @@ func add_pipe_pair():
 	
 	# bottom pipe sprites
 	currentPipeY = gapPosition + gapSize + 1
-	set_cell(currentPipeX, currentPipeY, pipe_bottom)
+	set_cell(currentPipeX, currentPipeY, pipe_tile_bottom)
 	currentPipeY += 1
 	while currentPipeY <= tileGridHeight:
-		set_cell(currentPipeX, currentPipeY, pipe_middle)
+		set_cell(currentPipeX, currentPipeY, pipe_tile_middle)
 		currentPipeY += 1
 
 	# bottom pipe collision

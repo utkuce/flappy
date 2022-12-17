@@ -26,6 +26,9 @@ func start_game():
 	$Player.velocity = Vector2($Player.velocity.x, 0)
 	
 	$Environment/Pipes.reset(screenSize)
+	$Environment/Background/CloudsLayer1/Clouds.reset(screenSize)
+	$Environment/Background/CloudsLayer2/Clouds.reset(screenSize)
+	
 	
 func increment_score():
 	currentScore += 1
