@@ -32,7 +32,8 @@ func start_game():
 	
 func increment_score():
 	currentScore += 1
-	bestScore = currentScore if currentScore > bestScore else currentScore
+	if currentScore > bestScore:
+		bestScore = currentScore
 	updateScoreDisplay()
 	
 func updateScoreDisplay():
